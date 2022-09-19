@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .btn-primary {
+        @apply w-40 h-12 py-[12px] px-[24px] border-solid border border-linen-black-red text-white rounded-md font-body;
+        background: linear-gradient(90deg, #64362D 0%, #82544B 100%);
+    }
+    .btn-primary:hover{
+        background: linear-gradient(90deg, #774135 0%, #8f5d52 100%);
+    }
+    .input {
+        @apply h-[48px] bg-white border border-solid border-gray-rgba py-3 px-4 rounded-md font-body font-normal text-base text-gray
+    }
+}
