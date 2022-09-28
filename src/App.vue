@@ -2,15 +2,27 @@
   <div class="container mt-5">
     <button class="btn-primary" @click="openPopup">Open Popup
     </button>
-    <Popup
+    <ModalComponent
         v-if="showPopup"
-        @sendPopup="openModal"
-        v-model:is-close-popup="showPopup"
-    />
+        v-model:is-open-modal="showModal"
+    >
+      <template v-slot:content>
+        <Popup @sendPopup="openModal"
+               v-model:is-close-popup="showPopup"/>
+      </template>
+    </ModalComponent>
     <ModalComponent
         v-if="showModal"
-        v-model:is-open-modal="showModal"
-    />
+        v-model:is-open-modal="showModal">
+      <template v-slot:content>
+        <div>
+          <h1 class="font-body font-semibold text-2xl text-seal-brown pb-6">Success!</h1>
+        </div>
+        <button class="btn-primary" @click="showModal = false">
+          Ok
+        </button>
+      </template>
+    </ModalComponent>
   </div>
 </template>
 
@@ -33,12 +45,6 @@ export default {
     function openPopup() {
       showPopup.value = true;
     }
-
-    // function openModal() {
-    //   console.log("enlarging text");
-    //   showPopup.value = false;
-    //   showModal.value = true;
-    // }
 
     return {
       showPopup,

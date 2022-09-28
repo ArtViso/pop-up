@@ -7,7 +7,6 @@
       </div>
       <v-select
           label="title"
-          append-to-body
           v-model="updateRole"
           :clearable="false"
           :searchable="false"
@@ -102,8 +101,6 @@ export default {
 
     function calculatePosition(dropdownList) {
       dropdownList.style.width = '318px';
-      dropdownList.style.top = '310px'
-      dropdownList.style.left = '885px';
     }
 
     return {
@@ -124,59 +121,13 @@ export default {
 ::-webkit-scrollbar-track {
   background: #F6EFE6;
   border-radius: 8px;
+  margin-top: 15px;
+  padding-right: 15px;
 }
 
 ::-webkit-scrollbar-thumb {
   background: #DFD8CF;
   border-radius: 8px;
-}
-
-.v-select {
-  .vs__search {
-    width: 0;
-    height: 0;
-    margin: 0;
-    padding: 0;
-  }
-
-  .vs__dropdown-toggle {
-    border: none;
-    align-items: center;
-    padding: 4px;
-  }
-
-  .vs__actions {
-    padding: 0;
-  }
-
-  &.vs--open {
-    .vs__dropdown-toggle {
-      color: #9C4619;
-    }
-    .vs__open-indicator svg path{
-      fill: #9C4619;
-    }
-  }
-}
-
-.vs__dropdown-menu {
-  background-color: #FFF8EF;
-  padding: 4px 0;
-  border-radius: 6px;
-  box-shadow: 4px 4px 24px rgba(0, 0, 0, 0.16);
-  overflow: unset;
-  width: 320px;
-}
-
-.vs__dropdown-option {
-  width: 100%;
-  white-space: pre-wrap;
-  padding: 12px 16px;
-  background: #FFF8EF;
-
-  &:hover {
-    background-color: #F6EFE6;
-  }
 }
 </style>
 

@@ -1,13 +1,8 @@
 <template>
   <transition class="modal-animation">
-    <div class="fixed inset-0 z-10 bg-black-rgba flex justify-center items-center">
-      <div class="bg-floral-white h-[180px] mt-8 rounded-md divide-y divide-[#DFD8CF] px-6 py-6 text-center">
-        <div>
-          <h1 class="font-body font-semibold text-2xl text-seal-brown pb-6">Success!</h1>
-        </div>
-        <button class="btn-primary" @click="close">
-          Ok
-        </button>
+    <div class="fixed inset-0 z-10 bg-black-rgba flex justify-center items-center" @click="close">
+      <div class="bg-floral-white h-[180px] mt-8 rounded-md divide-y divide-[#DFD8CF] px-6 py-6" @click.stop="">
+        <slot name="content"></slot>
       </div>
     </div>
   </transition>

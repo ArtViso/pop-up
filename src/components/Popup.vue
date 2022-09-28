@@ -18,12 +18,12 @@
             <form @submit.prevent="addNewUsers">
               <input
                   v-model="state.email"
-                  type="email"
-                  class="w-[459px] input"
+                  type="text"
+                  class="w-[459px] input mr-3 text-black"
                   required
                   placeholder="Enter people E-mails"
                   v-focus
-                  >
+              >
               <button
                   :disabled="!state.email"
                   :class="{ 'opacity-25 cursor-not-allowed': !state.email}"
@@ -127,11 +127,13 @@
             </a>
           </div>
         </div>
-        <div class="pl-6 pt-4 h-[398px] overflow-y-auto">
-          <div v-if="!users.length">
-            <p class="uppercase mt-16 text-center transform font-body font-semibold text-2xl text-seal-brown">you didn't invite anyone!</p>
-          </div>
-          <TransitionGroup name="list" tag="div">
+        <transition-group class="list">
+          <div class="pl-6 pt-4 mr-1.5 h-[398px] overflow-y-auto">
+            <div v-if="!users.length">
+              <p class="uppercase mt-16 text-center transform font-body font-semibold text-2xl text-seal-brown">you
+                didn't
+                invite anyone!</p>
+            </div>
             <ListItem v-for="(user, index) in users" :key="index"
                       :name="user.name"
                       :email="user.email"
@@ -139,8 +141,8 @@
                       @update:role="updateRole($event, user)"
                       @deleteUser="deleteUser(index)"
             />
-          </TransitionGroup>
-        </div>
+          </div>
+        </transition-group>
         <div class="px-6">
           <div class="mt-6">
             <input
@@ -177,12 +179,6 @@ export default {
   components: {
     ListItem
   },
-  props: {
-    isClosePopup: {
-      type: Boolean,
-      required: true,
-    },
-  },
   directives: {
     focus
   },
@@ -198,7 +194,7 @@ export default {
       }
     })
     const users = ref([]);
-    const people = ref(['John Wick', 'Bruce Wayne', 'Jose Galdino', 'Astrid Snyder', 'Ritthy Little', 'Johnny Allen']);
+    const people = ref(['Jose Galdino', 'John Wick', 'Bruce Wayne', 'Astrid Snyder', 'Ritthy Little', 'Johnny Allen']);
     const role = ref(['Guest', 'Admin']);
     const v$ = useVuelidate(rules, state);
     const message = ref('');
@@ -234,6 +230,7 @@ export default {
     }
 
     function sendPopup() {
+      localStorage.removeItem('users')
       console.log("Message:", message.value)
       emit("sendPopup");
     }
@@ -273,7 +270,7 @@ export default {
 }
 
 .popup-animation-enter-from,
-.popup-animation-enter-to{
+.popup-animation-enter-to {
   opacity: 0;
 }
 
