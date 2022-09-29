@@ -1,0 +1,18 @@
+@mixin scroll {
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #F6EFE6;
+    border-radius: 8px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding-right: 15px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #DFD8CF;
+    border-radius: 8px;
+  }
+}

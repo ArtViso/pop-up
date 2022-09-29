@@ -1,6 +1,6 @@
 <template>
   <div class="flex items-center mb-3">
-    <div class="flex w-[518px] justify-between items-center bg-linen-white py-1.5 px-3 mr-2.5">
+    <div id='scroll' class="flex w-[518px] justify-between items-center bg-linen-white py-1.5 px-3 mr-2.5">
       <div>
         <p class="font-body font-normal text-base text-seal-brown">{{ name }}</p>
         <p class="font-body font-normal text-xs text-linen-red">{{ email }}</p>
@@ -113,21 +113,4 @@ export default {
 }
 </script>
 
-<style lang="scss">
-::-webkit-scrollbar {
-  width: 4px;
-}
-
-::-webkit-scrollbar-track {
-  background: #F6EFE6;
-  border-radius: 8px;
-  margin-top: 15px;
-  padding-right: 15px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #DFD8CF;
-  border-radius: 8px;
-}
-</style>
 

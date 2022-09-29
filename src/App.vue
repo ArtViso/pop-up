@@ -3,25 +3,24 @@
     <button class="btn-primary" @click="openPopup">Open Popup
     </button>
     <ModalComponent
-        v-if="showPopup"
-        v-model:is-open-modal="showModal"
+        title="Invite others"
+        :is-open-modal="showPopup"
+        @close="showPopup = false"
     >
-      <template v-slot:content>
-        <Popup @sendPopup="openModal"
-               v-model:is-close-popup="showPopup"/>
-      </template>
+      <Popup @sendPopup="openModal"
+             v-model:is-close-popup="showPopup"/>
     </ModalComponent>
     <ModalComponent
-        v-if="showModal"
-        v-model:is-open-modal="showModal">
-      <template v-slot:content>
-        <div>
-          <h1 class="font-body font-semibold text-2xl text-seal-brown pb-6">Success!</h1>
-        </div>
+        title="Modal"
+        :is-open-modal="showModal"
+        @close="showModal = false"
+    >
+      <div class="px-6 pt-6 text-center">
+        <p class="font-body font-semibold text-2xl text-seal-brown pb-6">Success!</p>
         <button class="btn-primary" @click="showModal = false">
           Ok
         </button>
-      </template>
+      </div>
     </ModalComponent>
   </div>
 </template>
@@ -38,6 +37,7 @@ export default {
     const showModal = ref(false);
 
     function openModal() {
+      localStorage.removeItem('users')
       showPopup.value = false;
       showModal.value = true;
     }
